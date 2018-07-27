@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Oneliners on Sam Norbury</title>
-    <link>http://zy.io/tags/oneliners/</link>
+    <link>http://zyio.github.io/tags/oneliners/</link>
     <description>Recent content in Oneliners on Sam Norbury</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 22 Feb 2015 01:17:03 +0100</lastBuildDate>
     
-	<atom:link href="http://zy.io/tags/oneliners/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://zyio.github.io/tags/oneliners/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Internal &gt; External IP mapping</title>
-      <link>http://zy.io/blog/2015-02-22-internal-external-ip-mapping/</link>
+      <link>http://zyio.github.io/blog/2015-02-22-internal-external-ip-mapping/</link>
       <pubDate>Sun, 22 Feb 2015 01:17:03 +0100</pubDate>
       
-      <guid>http://zy.io/blog/2015-02-22-internal-external-ip-mapping/</guid>
+      <guid>http://zyio.github.io/blog/2015-02-22-internal-external-ip-mapping/</guid>
       <description>In a hosting environment, it&#39;s not too uncommon to find yourself with a server full of IP addresses starting 172 or 192. These IPs are private range and are typically translated to &#39;real&#39; public IPs by the firewall or other network device in front of your server.
 That&#39;s all well and good, but when you need to find your external IP, you&#39;re stuck consulting solution documents or curling icanhazip.com.
 Below is a small command I cobbled together to iterate over all the internal IPs on your server and print out their external mapping:</description>
