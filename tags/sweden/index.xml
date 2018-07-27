@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sweden on Sam Norbury</title>
+    <link>http://zy.io/tags/sweden/</link>
+    <description>Recent content in Sweden on Sam Norbury</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 23 Mar 2014 13:20:55 +0100</lastBuildDate>
+    
+	<atom:link href="http://zy.io/tags/sweden/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sweden - Day 1</title>
+      <link>http://zy.io/blog/2014-03-23-sweden-day-1/</link>
+      <pubDate>Sun, 23 Mar 2014 13:20:55 +0100</pubDate>
+      
+      <guid>http://zy.io/blog/2014-03-23-sweden-day-1/</guid>
+      <description>So I&#39;m on a train. Have been for 14 hours and there&#39;s still 4 to go. 18 hours is probably close to my annual quota for public transport, so it&#39;s good to get it out of the way in one chunk. Except I still have to head back.
+We&#39;re (Jon and myself) on the way to Abisko, a place so far north it&#39;s practically Norway. The plan is then to saunter on down through Sweden, heading for a mountain to climb and a hut with the promise of hot water.</description>
+    </item>
+    
+  </channel>
+</rss>

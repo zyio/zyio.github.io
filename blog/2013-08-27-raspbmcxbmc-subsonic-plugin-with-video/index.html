@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Raspbmc/xbmc Subsonic plugin with video</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://zy.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.41" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Raspbmc/xbmc Subsonic plugin with video</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/blog/">Posts</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:sam@zy.io"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.instagram.com/sam.norbury/"><i class="fa fa-instagram"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/zyio/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://keybase.io/zyio"><i class="fa fa-key"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/sam-norbury/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/2013-08-27-raspbmcxbmc-subsonic-plugin-with-video/">Raspbmc/xbmc Subsonic plugin with video</a></h4>
+    <h5>August 27, 2013</h5>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><p>Rough, I'll amend this later.</p>
+<p>I know it's hackish and the seds are very nasty, but it seems to work so far. Path of least resistance and all that.</p>
+<p>Your mileage may vary</p>
+<p>Need to be running full version of subsonic, or supersonic fork.</p>
+<p>ssh in as pi user.</p>
+<p>cd ~/.xbmc/addons</p>
+<p>wget https://dl.dropbox.com/u/86110007/Subsonic%20for%20XBMC%20-%20Frodo.zip</p>
+<p>unzip Subsonic\ for\ XBMC\ -\ Frodo.zip</p>
+<p>find plugin.audio.subsonic/ -type f -exec sed -i 's/Addon.log/xbmc.log/g' {} \;</p>
+<p>cp -rp plugin.audio.subsonic plugin.video.subsonic</p>
+<p>find plugin.video.subsonic/ -type f -exec sed -i 's/audio/video/g' {} \;</p>
+<p>cd plugin.video.subsonic/resources</p>
+<p>vim.tiny settings.xml</p>
+<p>"</p>
+<p>&lt;setting id="server" type="text" label="30100" default="http://ip.ip.ip.ip:4040" /&gt;<br />
+&lt;setting id="user" type="text" label="30101" default="username" /&gt;<br />
+&lt;setting id="password" type="text" option="hidden" label="30102" default="passwd" /&gt;</p>
+<p>"</p>
+<p>sudo initctl restart xbmc</p>
+<p>&nbsp;</p>
+<p>In xbmc:</p>
+<p>videos &gt; Add-ons &gt; subsonic</p>
+<p>&nbsp;</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved.</p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

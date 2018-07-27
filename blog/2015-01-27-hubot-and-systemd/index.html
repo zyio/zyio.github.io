@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hubot and Systemd</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: green;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="http://zy.io/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.41" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Hubot and Systemd</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/blog/">Posts</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:sam@zy.io"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.instagram.com/sam.norbury/"><i class="fa fa-instagram"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/zyio/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://keybase.io/zyio"><i class="fa fa-key"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/sam-norbury/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/blog/2015-01-27-hubot-and-systemd/">Hubot and Systemd</a></h4>
+    <h5>January 27, 2015</h5>
+    
+
+</div>
+
+
+    <br> <div class="text-justify"><div class="document">
+
+
+<p>I've recently been building an IRC server for work, alongside other things, which finally gave us the chance to deploy an instance of <a class="reference external" href="https://hubot.github.com/">hubot</a>, githubs automation/procrastination IRC bot.</p>
+<p>It was also a good way to force myself to install a CentOS 7 box and get to grips with systemd, something I should have done a long time ago.</p>
+<p>First major issue I hit was that hubot didn't have a unit file that I could find anywhere, this wasn't really an issue whilst I was testing, but when it went live I didn't want to have to rely on manually running a small bash wrapper I'd written or using an abomination like forever.js.</p>
+<p>The bash wrapper I've written is a bit rough, but perfectly functional:</p>
+<pre class="code bash literal-block">
+<span class="comment hashbang">#!/bin/bash
+</span><span class="name variable">GITLAB_CHANNEL</span><span class="operator">=</span><span class="literal string double">&quot;#announce&quot;</span> <span class="name variable">REDIS_URL</span><span class="operator">=</span><span class="literal string double">&quot;redis://127.0.0.1:6379/think&quot;</span> <span class="name variable">HUBOT_IRC_SERVER</span><span class="operator">=</span>irc.domain.tld  <span class="name variable">HUBOT_IRC_USESSL</span><span class="operator">=</span><span class="literal string double">&quot;true&quot;</span> <span class="name variable">HUBOT_IRC_SERVER_FAKE_SSL</span><span class="operator">=</span><span class="literal string double">&quot;true&quot;</span>  <span class="name variable">HUBOT_IRC_ROOMS</span><span class="operator">=</span><span class="literal string double">&quot;#general,#announce,#alerts&quot;</span>  <span class="name variable">HUBOT_IRC_NICK</span><span class="operator">=</span><span class="literal string double">&quot;hubot&quot;</span>   <span class="name variable">HUBOT_IRC_UNFLOOD</span><span class="operator">=</span><span class="literal string double">&quot;true&quot;</span>   <span class="name variable">HUBOT_IRC_PORT</span><span class="operator">=</span><span class="literal number">6667</span>   <span class="name variable">HUBOT_IRC_PASSWORD</span><span class="operator">=</span><span class="literal string double">&quot;HubotPasswordsAreTheBestPasswords&quot;</span> <span class="name variable">HUBOT_IRC_UNFLOOD</span><span class="operator">=</span><span class="literal string double">&quot;false&quot;</span> /home/hubot/bin/hubot -a irc --name hubot
+</pre>
+<p>To replace all that with a sensible unit file was quite a challenge, and I can't find evidence of anyone else having done it. Here's what I came up with:</p>
+<pre class="code console literal-block">
+<span class="generic output">[Unit]
+Description=Hubot is a robot
+After=ngircd.service
+
+[Service]
+Environment=GITLAB_CHANNEL=#announce
+Environment=HUBOT_IRC_SERVER=irc.domain.tld
+Environment=HUBOT_IRC_USESSL=true
+Environment=HUBOT_IRC_ROOMS=#general,#announce,#alerts
+Environment=HUBOT_IRC_NICK=hubot
+Environment=HUBOT_IRC_UNFLOOD=true
+Environment=HUBOT_IRC_PORT=6667
+Environment=HUBOT_IRC_PASSWORD=HubotPasswordsAreTheBestPasswords
+Environment=HUBOT_IRC_UNFLOOD=false
+Environment=PATH=node_modules/.bin:node_modules/hubot/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+WorkingDirectory=/home/hubot
+ExecStart=/usr/bin/node /home/hubot/node_modules/hubot/node_modules/.bin/coffee /home/hubot/node_modules/.bin/hubot -a irc --name hubot
+Restart=always
+StandardOutput=syslog
+SyslogIdentifier=hubot
+User=hubot
+Group=hubot
+
+
+[Install]
+WantedBy=multi-user.target</span>
+</pre>
+<p>Reload systemd to put it all live:</p>
+<p><tt class="docutils literal">systemctl <span class="pre">daemon-reload</span></tt></p>
+<p>Then chkconfig it on (old habits die hard) and start it up:</p>
+<p><tt class="docutils literal">systemctl enable hubot</tt></p>
+<p><tt class="docutils literal">systemctl start hubot</tt></p>
+<p>So far, that's about it really. It does what I want and it does it pretty well. It may be a bit rough in parts but it should be pretty transferable to your own install of hubot. Any comments/thoughts, please <a class="reference external" href="http://zy.io/about.html">get in touch.</a></p>
+</div></div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved.</p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Sam Norbury</title>
+    <link>http://zy.io/tags/</link>
+    <description>Recent content in Tags on Sam Norbury</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 22 Feb 2015 01:17:03 +0100</lastBuildDate>
+    
+	<atom:link href="http://zy.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux</title>
+      <link>http://zy.io/tags/linux/</link>
+      <pubDate>Sun, 22 Feb 2015 01:17:03 +0100</pubDate>
+      
+      <guid>http://zy.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oneliners</title>
+      <link>http://zy.io/tags/oneliners/</link>
+      <pubDate>Sun, 22 Feb 2015 01:17:03 +0100</pubDate>
+      
+      <guid>http://zy.io/tags/oneliners/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sweden</title>
+      <link>http://zy.io/tags/sweden/</link>
+      <pubDate>Sun, 23 Mar 2014 13:20:55 +0100</pubDate>
+      
+      <guid>http://zy.io/tags/sweden/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

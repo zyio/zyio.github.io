@@ -1,0 +1,89 @@
+==================================================================
+https://keybase.io/zyio
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://zy.io
+  * I am zyio (https://keybase.io/zyio) on keybase.
+  * I have a public key with fingerprint A5F8 C823 582D CE52 AD8A  70B0 0C38 D7DD 6762 24F8
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120fd580989f77a19fb4d0fe16120e1dbb792dd8c0e2b07a3ab21502791e423da560a",
+      "fingerprint": "a5f8c823582dce52ad8a70b00c38d7dd676224f8",
+      "host": "keybase.io",
+      "key_id": "0c38d7dd676224f8",
+      "kid": "0101886bb1a083d88ee2b4e9900f5687130bffc844d1913432332384cd0adc7f87ab0a",
+      "uid": "5d466021495d40ff724610f2cc739219",
+      "username": "zyio"
+    },
+    "merkle_root": {
+      "ctime": 1532568531,
+      "hash_meta": "baacc1fbfbc2ca8589a3de2c40753b1913e077b6bfbfc05fdd1e67db00a4cbbb",
+      "seqno": 3332185
+    },
+    "revoke": {
+      "sig_ids": [
+        "5eb80e258dc1c8adfaa0eef62aca9564b96276ec67a0e02262a7efead22688a20f"
+      ]
+    },
+    "service": {
+      "hostname": "zy.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1532568575,
+  "expire_in": 157680000,
+  "prev": "3965224de4a34e86fa584ac829ec00c829552aee8da59fdfc25aae63284e849d",
+  "seqno": 17,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.77
+Comment: https://keybase.io/crypto
+
+yMP2AnicZVMLbBRFGL62FloErSEGER+w8jKBMjv7mNkTBSwgbw1SlEA5Z3dm2k3b
+2/Nue5UelRhEaEpDAEtLoDwUCaASCVgoRQoVpAVqG6BUIEVALFagFikJkALOFdFE
+N5vM6/v///u/+eZQrzhPj5ieuKk53Rx4O+ZYdWaOZ/aslx5EJNOh8yRvRMpkXQPL
+oizk+jJtKnklIEPAqYaBgQ2OEJENbqoUcCbr4oTJ1DSRASnFFmDQBIgoxISyBiAy
+ZKZChRJNB0QaJnHbn86CgaDtd0VaonFsYahoGFKLaZBQTBAwAbAUTBGlOtIhVDkW
+gRlOKBohyJkkxJJtR+yJhe8hvf/jH/EGMsa6acoEYIVizAQ9lRkGAFzTMZIVYHJu
+YVWlsiErqgIV8WPVooBQC3GMiNnFO6crnUZVXQdQVg0xA5wjqOoy4NCykGJA2YgC
+QyzoJ9lMoPPmCZb5w6RsFszMYr6g47hRYS3Xjh7LmgIFBU2RRXMklOHLZi4RUSYh
+liVzk5sWtAjWsEEUyqClAqQpZpQlAwiZugBwC2icUpnpiArRiGqZpik4hNj7fkfy
+KqIXGWuCQZCFnUwWLR6y04VkIck7W9KYicVtaZhasoUJ5YQAxrgOiUUMTVdNQ4dI
+Z5aOxD6AUBwgxhmhYooxEYaQ0vKjxYJh2+pKHr2jf3p/eEWBoOM6lpMltjJcNxDy
+RgVx5wWimFxm+v6O9pm2nwpriIgwC4Zsxy8EEsj/aIW0YRL7IGAHmc+OIjSkYyC+
+aB0WFikVQ9eEAyhTiaIyrHOiYZUIixnMEq4SoyZcxhgWhjQ45RbUCGG6ArFAqwb9
+VzwZCZ4kXeQUkvmJmxNkUn71wTmPeWJ6eLrFx0bfjKdHYtKjlzTNSfLU1JyoV9s6
+0A/jKufuz4KXG7+oPfx29qdTFr3eJ+FVdPpc+87JEwcU7G0avbGkbs+q73bEPDfk
+ebb2aJx/2+WTzSsG3Sh+MnnW4JbFe3hBxfCkP98o47c6p8S9Et9WU3wrc8lH+Key
++hWXcsc8NWVD+9cpmzd0bNu+GRa1ry9vsqXGD0v3bklZU9+wsXfrtJS6pdvrVm86
+eq1k4Z0jEys93ormm42pOxYmXvef3Ose/nLRofC36Wlk+IHs4Wxf6njjbNGZ5bkH
+y6i/Lr3mSilrSR43cLDbv6mz35n7qbuk9UPj+2bHT5j+1oHK+f3jw5Km5h2sMkac
+G9DMt93tXDnk9x8HpSZmPLFuTSE7Orpnz36nZsb1Wn5sZnnioat9ZhZHHr+04OrV
+0LN7prpndxYaF7t7RzkNRffm1LXcnH5zfMf3CacT6gsK177Z/svcmKzbhatqI9tr
+P5vesTKjLXn1+RI04+IfU48cmJuQv7r32Et2+enK6uaPJxX432u+l7SzDc345rjU
+GClvWPxz/siClsim31DHiUDrqeNjQ88sqk5Luy+d33/mwpbr70aOVcbk5fk3lR1+
+MPqF+4HLDbNGVN39qqS16vMFW3fd+7Vo6dBuSz6ZVLs7o4L6tuZUXCteO2rf7qe7
+J4/se2X+uopWedlr1RPeSYldrFyY5LuxIR4UvninanJxydQBLDb3bueYzvCyIbEj
+Sl9e8xeM5A/G
+=7Ler
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zyio
+
+==================================================================
+

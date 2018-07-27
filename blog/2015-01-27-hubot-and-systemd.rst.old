@@ -1,0 +1,55 @@
+---
+layout: post
+hidden: true
+title: "Hubot and Systemd"
+quote: "Because everyone needs an IRC bot to send them pugs"
+date: 2015-01-27T10:16:18+01:00
+---
+
+I've recently been building an IRC server for work, alongside other things, which finally gave us the chance to deploy an instance of hubot_, githubs automation/procrastination IRC bot.
+
+It was also a good way to force myself to install a CentOS 7 box and get to grips with systemd, something I should have done a long time ago.
+
+First major issue I hit was that hubot didn't have a unit file that I could find anywhere, this wasn't really an issue whilst I was testing, but when it went live I didn't want to have to rely on manually starting a bash script.
+
+The bash script in question is a bit rough, but perfectly functional:
+
+.. code-block:: bash
+    
+    #!/bin/bash
+    GITLAB_CHANNEL="#announce" REDIS_URL="redis://127.0.0.1:6379/think" HUBOT_IRC_SERVER=irc.domain.tld  HUBOT_IRC_USESSL="true" HUBOT_IRC_SERVER_FAKE_SSL="true"  HUBOT_IRC_ROOMS="#general,#announce,#alerts"  HUBOT_IRC_NICK="hubot"   HUBOT_IRC_UNFLOOD="true"   HUBOT_IRC_PORT=8443   HUBOT_IRC_PASSWORD="HubotPasswordsAreTheBestPasswords" HUBOT_IRC_UNFLOOD="false" /home/hubot/bin/hubot -a irc --name hubot
+
+Maybe calling that a bash script is a bit generous, but it's the best way I found to get hubot running with all those variables. No idea why it wasn't happy with me setting those as environment variables, that stalled me for quite a bit.
+
+With that simple script in place to start hubot, we now just need a basic unit file to fire it off:
+
+.. code-block:: console
+
+    [Unit]
+    Description=Hubot is a robot
+    After=ngircd.service
+
+    [Service]
+    ExecStart=/bin/bash /home/hubot/hubot.sh
+    Type=simple
+    User=hubot
+    Group=hubot
+
+    [Install]
+    WantedBy=multi-user.target
+
+Reload systemd to put it all live:
+
+``systemctl daemon-reload``
+
+
+Then chkconfig it on (old habits die hard) and start it up:
+
+``systemctl enable hubot``
+
+``systemctl start hubot``
+
+
+So far, that's about it really. Soon I'll force myself to write a much more complex unit file and do a bit of a writeup on the process.
+
+.. _hubot: https://hubot.github.com/
